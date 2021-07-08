@@ -12,9 +12,60 @@ class DOMhandler {
     element.replaceWith(clonedElement);
     return clonedElement;
   }
+  static updateInfoBtn(infButtonDOM, func, oldFunc, newFunc) {
+    console.log(newFunc);
+    console.log(oldFunc);
+    infButtonDOM.addEventListener('click', func.bind(null, newFunc, oldFunc));
+  }
+  static clearInfoButton(element) {
+    const clonedElement = element.cloneNode(true);
+    element.replaceWith(clonedElement);
+    return clonedElement;
+  }
 }
 
-class Info {}
+class Components {
+  constructor() {}
+  detach() {
+    this.exInfElement.remove();
+  }
+  attach() {
+    this.projectElement.parentNode.insertBefore(
+      this.infoCardElement,
+      this.projectElement.nextSibling
+    );
+  }
+}
+class Info extends Components {
+  constructor(projectElement) {
+    super();
+    this.projectElement = projectElement;
+    this.buttonDOM = projectElement.querySelector('button:first-of-type');
+    this.exInfoText = this.projectElement.dataset.extraInfo;
+    this.createInfoElement();
+    this.render(this.attach.bind(this), this.detach.bind(this)); //bind dene
+    this.exInfElement = this.projectElement.nextElementSibling;
+  }
+  update(oldFunc, newFunc) {
+    this.buttonDOM = DOMhandler.clearInfoButton(this.buttonDOM);
+    DOMhandler.updateInfoBtn(
+      this.buttonDOM,
+      this.render.bind(this),
+      oldFunc,
+      newFunc
+    );
+  }
+  render(funcToDo, newFunc) {
+    funcToDo();
+    console.log(newFunc);
+    this.update(funcToDo, newFunc);
+  }
+  createInfoElement() {
+    this.infoCardElement = document.createElement('div');
+    this.infoCardElement.className = 'card';
+    this.infoCardElement.innerHTML = `<h5>${this.exInfoText}</h5>`;
+  }
+}
 
 class Project {
   constructor(id, switchFunction) {
@@ -34,7 +85,12 @@ class Project {
       this.switchHandler.bind(null, this.id)
     ); //buraya bulunduğu listeye gidip elementi kaldıracak bir fonksiyon gerek
   }
-  moreInfoButtonActivate() {}
+  infoHandler() {
+    new Info(this.projectDom);
+  }
+  moreInfoButtonActivate() {
+    this.infoButtonDom.addEventListener('click', this.infoHandler.bind(this));
+  }
 }
 
 class ProjectList {
@@ -54,12 +110,11 @@ class ProjectList {
 
   switchHandler(id) {
     const index = this.projects.findIndex((obj) => obj.id === id);
-    console.log(this.projects);
     const projectItemElement = document.getElementById(id);
     let switchBtn = projectItemElement.querySelector('button:last-of-type');
     switchBtn = DOMhandler.clearEventListeners(switchBtn);
     this.switchAddHandler(this.projects[index]);
-    this.projects = this.projects.filter((obj)=>obj.id != id);
+    this.projects = this.projects.filter((obj) => obj.id != id);
   }
   switchAddBridge(switchAdd) {
     this.switchAddHandler = switchAdd;
