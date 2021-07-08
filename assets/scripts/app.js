@@ -13,8 +13,6 @@ class DOMhandler {
     return clonedElement;
   }
   static updateInfoBtn(infButtonDOM, func, oldFunc, newFunc) {
-    console.log(newFunc);
-    console.log(oldFunc);
     infButtonDOM.addEventListener('click', func.bind(null, newFunc, oldFunc));
   }
   static clearInfoButton(element) {
@@ -57,7 +55,6 @@ class Info extends Components {
   }
   render(funcToDo, newFunc) {
     funcToDo();
-    console.log(newFunc);
     this.update(funcToDo, newFunc);
   }
   createInfoElement() {
