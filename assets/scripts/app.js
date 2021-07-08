@@ -26,17 +26,25 @@ class Components {
   constructor() {}
   detach() {
     this.exInfElement.remove();
+    this.projectClassInstance.extraInfoFlag = 0;
   }
   attach() {
     this.projectElement.parentNode.insertBefore(
       this.infoCardElement,
       this.projectElement.nextSibling
     );
+    this.projectClassInstance.extraInfoFlag = 1;
+  }
+  switch(){
+    this.detach();
+    this.attach();
   }
 }
 class Info extends Components {
-  constructor(projectElement) {
+  constructor(projectElement, projectClassInstance) {
     super();
+    this.projectClassInstance = projectClassInstance;
+    this.projectClassInstance.extraInfoFlag = 1;
     this.projectElement = projectElement;
     this.buttonDOM = projectElement.querySelector('button:first-of-type');
     this.exInfoText = this.projectElement.dataset.extraInfo;
@@ -67,6 +75,7 @@ class Info extends Components {
 class Project {
   constructor(id, switchFunction) {
     this.id = id;
+    this.extraInfoFlag = 0 ;
     this.switchHandler = switchFunction;
     this.projectDom = document.getElementById(id);
     this.infoButtonDom = this.projectDom.querySelector('button');
@@ -76,14 +85,13 @@ class Project {
     this.moreInfoButtonActivate();
   }
   switchButtonActivate() {
-    //burada butona evebt listener ekleyecek ve proje idsini bind edeceğim
     this.switchButtonDom.addEventListener(
       'click',
       this.switchHandler.bind(null, this.id)
-    ); //buraya bulunduğu listeye gidip elementi kaldıracak bir fonksiyon gerek
+    );
   }
   infoHandler() {
-    new Info(this.projectDom);
+    this.moreInfoClassInstance = new Info(this.projectDom, this);
   }
   moreInfoButtonActivate() {
     this.infoButtonDom.addEventListener('click', this.infoHandler.bind(this));
@@ -126,7 +134,9 @@ class ProjectList {
       this.buttonText,
       this.switchHandler.bind(this)
     );
-  }
+    if(projectClassInstance.extraInfoFlag === 1){
+    projectClassInstance.moreInfoClassInstance.switch();
+  }}
 }
 
 class App {
