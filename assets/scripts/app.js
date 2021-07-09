@@ -139,6 +139,42 @@ class ProjectList {
   }}
 }
 
+class AddProject{
+  constructor(activeProject){
+    this.projectNumber = 4;
+    this.connectAddButton();
+    this.activeProjectsList = activeProject;
+  }
+  createProjectElement(name, explanation, moreInf){
+    const newProjectElement = document.createElement("li");
+    newProjectElement.id=`p${this.projectNumber}`;
+    newProjectElement.dataset.extraInfo = moreInf;
+    newProjectElement.className ="card";
+    newProjectElement.innerHTML=` 
+    <h2>${name}</h2>
+    <p>${explanation}</p>
+    <button class="alt">More Info</button>
+    <button>Finish</button>`;
+    return newProjectElement;
+  }
+  createProject(){
+    const projectName = document.getElementById("project-name-input").value;
+    const projectExplanation = document.getElementById("explanation-input").value;
+    const MoreInfo = document.getElementById("more-info-input").value;
+    const projectElement = this.createProjectElement(projectName, projectExplanation, MoreInfo);
+    const activeProjectListElement = document.querySelector("#active-projects ul");
+    activeProjectListElement.append(projectElement);
+    this.activeProjectsList.projects.push( new Project(projectElement.id, this.activeProjectsList.switchHandler.bind(this.activeProjectsList)))
+    this.projectNumber++;
+  }
+
+  
+  connectAddButton(){
+    const addBtn = document.getElementById("add-button");
+    addBtn.addEventListener("click", this.createProject.bind(this));
+  }
+}
+
 class App {
   static init() {
     const activeProjectsList = new ProjectList('active', 'Finish');
@@ -149,6 +185,7 @@ class App {
     finishedProjectsList.switchAddBridge(
       activeProjectsList.switchAdd.bind(activeProjectsList)
     );
+    new AddProject(activeProjectsList);
   }
 }
 

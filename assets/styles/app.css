@@ -124,3 +124,20 @@ button:active {
   color: white;
   margin: 0;
 }
+
+#add-project {
+  border: 1px solid #535353;
+}
+
+#add-project > header {
+  background: #535353;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#add-project header h2 {
+  color: white;
+  margin: 0;
+}
