@@ -1,74 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Project Board</title>
-    <link rel="stylesheet" href="assets/styles/app.css" />
-    <script src="assets/scripts/app.js" defer></script>
-  </head>
-  <body>
-    <header id="main-header">
-      <h1>Project Planner</h1>
-    </header>
-    <section id="add-project">
-      <header>
-        <h2>Add New Project</h2>
-      </header>
-      <div class="card">Project Name: <input id="project-name-input"><br>
-        Explanation:&nbsp;&nbsp;&nbsp;&nbsp;<input id="explanation-input"><br>
-        More Info:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="more-info-input"><br>
-        <button id="add-button">Add</button>
-      </div>
 
-    </section>
-    <section id="active-projects">
-      <header>
-        <h2>Active Projects</h2>
-      </header>
-      <ul>
-        <li
-          id="p1"
-          data-extra-info="Got lifetime access, but would be nice to finish it soon!"
-          class="card"
-        >
-          <h2>Finish the Course</h2>
-          <p>Finish the course within the next two weeks.</p>
-          <button class="alt">More Info</button>
-          <button>Finish</button>
-        </li>
-        <li
-          id="p2"
-          data-extra-info="Not really a business topic but still important."
-          class="card"
-        >
-          <h2>Buy Groceries</h2>
-          <p>Don't forget to pick up groceries today.</p>
-          <button class="alt">More Info</button>
-          <button>Finish</button>
-        </li>
-      </ul>
-    </section>
-    <section id="finished-projects">
-      <header>
-        <h2>Finished Projects</h2>
-      </header>
-      <ul>
-        <li
-          id="p3"
-          data-extra-info="Super important conference! Fictional but still!"
-          class="card"
-        >
-          <h2>Book Hotel</h2>
-          <p>
-            Academind conference takes place in December, don't forget to book a
-            hotel.
-          </p>
-          <button class="alt">More Info</button>
-          <button>Activate</button>
-        </li>
-      </ul>
-    </section>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Mustafa Berkay Uslu, a game programmer eager to master the creation of game mechanics.">
+    <meta name="keywords" content="Game Developer, Portfolio, Mustafa Berkay Uslu, Game Programmer">
+    <title>Game Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Resources/favicon-16x16.png" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <section id="home" class="intro-section">
+            <div class="intro-row">
+                <h1 class="name">Mustafa Berkay Uslu</h1>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/usluberkay/" target="_blank" class="icon"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/BerkayUslu" target="_blank" class="icon" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="#" class="icon" id="email-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <span class="email" id="email-address">mberkayuslu@outlook.com</span>
+                    <a href="path/to/your_resume.pdf" target="_blank" class="resume-button">Resume <i
+                            class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+            <div class="profile-image-container">
+                <img src="Resources/profile.png" alt="Profile Image" class="profile-image">
+            </div>
+            <p class="intro-text">Game programmer eager to master the creation of game mechanics.</p>
+        </section>
+        <section id="projects">
+            <h2 class="projects-title">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h3>Learn Isle</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/learn-isle-app-icon.jpeg" alt="Game Image 1"
+                            class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://apps.apple.com/tr/app/learn-isle/id6503263247" target="_blank" class="icon"
+                            aria-label="App Store"><i class="fab fa-apple"></i></a>
+                    </div>
+                    <p>Game is designed for children to have fun and learn English. I am responsible for refactoring the
+                        managers and turning mini-games into templates, allowing for quick creation of new game
+                        variations through scriptable objects. The game has been accepted into the OGEM Incubation
+                        Program and is still under development, with a demo available on the App Store.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Fruit Basket Game</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/fruit basket.png" alt="Game Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video"
+                            src="https://www.youtube.com/embed/63g5nlTUfXs?si=tOstguiSUtxew28p" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                    </div>
+                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
+                        for Unity asset to create body tracking features. The game starts by checking if the required
+                        parts of the player's body are within the frame using body pose estimation.
+                        In the game player's body is tracked, and a basket follows their movements. The
+                        objective is to catch falling fruits by moving left and right.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Balloon Game</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/Balloon.png" alt="Game Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video"
+                            src="https://www.youtube.com/embed/_RhI7ye-L_A?si=-ft7vXQX086C6l2l" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                    </div>
+                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
+                        for Unity asset to create body tracking features. The game starts by checking if the required
+                        parts of the player's body are within the frame using body pose estimation.
+                        In the game, the player's hands are tracked. The objective is to pop the balloons using their
+                        hands within a set time frame.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Submarine Game</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/Submarine.png" alt="Game Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video"
+                            src="https://www.youtube.com/embed/MnUnHhTuSR8?si=N7AZqO_ouGyl5zGL" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                    </div>
+                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
+                        for Unity asset to create body tracking features. The game starts by checking if the required
+                        parts of the player's body are within the frame using body pose estimation.
+                        In the game, the player's head is tracked. If the player is too close to the screen, the game
+                        stops to prevent cheating. The objective is to move a submarine vertically and travel without
+                        hitting the barriers.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Bamboo Game</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/bamboo.png" alt="Game Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video"
+                            src="https://www.youtube.com/embed/olgnQRe8ptU?si=fqnq_TvHm7vlWeUS" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                    </div>
+                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
+                        for Unity asset to create body tracking features. The game starts by checking if the required
+                        parts of the player's body are within the frame using body pose estimation.
+                        In the game, the player's full body is tracked. The objective is to move away from the red zone
+                        on the screen. The game stops if the player cannot be detected for a certain time to prevent
+                        cheating.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Ball Game</h3>
+                    <div class="image-container">
+                        <img src="Resources/Game Photos/Ball game.png" alt="Game Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video"
+                            src="https://www.youtube.com/embed/_aceHvvcaxs?si=0tj89JKxDytSZ5gs" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                    </div>
+                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
+                        for Unity asset to create body tracking features. The game starts by checking if the required
+                        parts of the player's body are within the frame using body pose estimation.
+                        In the game, the player's hands are tracked. The player needs to hit the balls coming out of the
+                        tubes while avoiding spiked balls, which decrease their health.</p>
+                </div>
+            </div>
+        </section>
+        <section id="personal-projects">
+            <h2 class="projects-title">Personal Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h3>Personal Project Title 1</h3>
+                    <div class="image-container">
+                        <img src="path/to/personal-image1.jpg" alt="Personal Project Image 1" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                        <a href="https://github.com/yourprofile/personalproject1" target="_blank" class="icon"
+                            aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.example" target="_blank" class="icon"
+                            aria-label="Play Store"><i class="fab fa-google-play"></i></a>
+                        <a href="https://apps.apple.com/app/id123456789" target="_blank" class="icon"
+                            aria-label="App Store"><i class="fab fa-apple"></i></a>
+                    </div>
+                    <p>Description of the personal project.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Personal Project Title 2</h3>
+                    <div class="image-container">
+                        <img src="path/to/personal-image2.jpg" alt="Personal Project Image 2" class="project-image">
+                    </div>
+                    <div class="video-container">
+                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-buttons">
+                        <button class="toggle-video">Show Video</button>
+                        <a href="https://github.com/yourprofile/personalproject2" target="_blank" class="icon"
+                            aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.example" target="_blank" class="icon"
+                            aria-label="Play Store"><i class="fab fa-google-play"></i></a>
+                        <a href="https://apps.apple.com/app/id123456789" target="_blank" class="icon"
+                            aria-label="App Store"><i class="fab fa-apple"></i></a>
+                    </div>
+                    <p>Description of the personal project.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
 </html>
