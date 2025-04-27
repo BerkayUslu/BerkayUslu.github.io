@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,7 @@
             --dark: #5a4123;
             --light: #fffbeb;
         }
-
+        
         body {
             font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
             background-color: #fffbeb;
@@ -27,7 +26,7 @@
             min-height: 100vh;
             color: var(--dark);
         }
-
+        
         .container {
             background-color: white;
             border-radius: 20px;
@@ -39,7 +38,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .container::before {
             content: "";
             position: absolute;
@@ -49,59 +48,59 @@
             height: 8px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
-
+        
         .logo {
             margin-bottom: 1.5rem;
         }
-
+        
         .logo img {
             max-width: 180px;
             height: auto;
         }
-
+        
         .chick {
             position: absolute;
             width: 50px;
             height: 50px;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="%23FFEB3B"/><circle cx="40" cy="40" r="5" fill="%23000"/><circle cx="60" cy="40" r="5" fill="%23000"/><path d="M45,60 Q50,65 55,60" stroke="%23000" stroke-width="2" fill="none"/><path d="M40,30 L30,20" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M60,30 L70,20" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M50,80 L40,90" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M50,80 L60,90" stroke="%23FF9800" stroke-width="3" fill="none"/></svg>');
         }
-
+        
         .chick-top-left {
             top: 20px;
             left: 20px;
             transform: rotate(-15deg);
         }
-
+        
         .chick-bottom-right {
             bottom: 20px;
             right: 20px;
             transform: rotate(15deg);
         }
-
+        
         h1 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
-
+        
         p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
             line-height: 1.5;
         }
-
+        
         .form-group {
             margin-bottom: 1.2rem;
             text-align: left;
         }
-
+        
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
             color: var(--dark);
         }
-
+        
         input {
             width: 100%;
             padding: 0.8rem;
@@ -112,12 +111,12 @@
             transition: border-color 0.3s;
             box-sizing: border-box;
         }
-
+        
         input:focus {
             outline: none;
             border-color: var(--primary);
         }
-
+        
         button {
             background-color: var(--primary);
             color: white;
@@ -131,101 +130,98 @@
             font-family: inherit;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+        
         button:hover {
             background-color: #ffaa00;
             transform: translateY(-2px);
         }
-
+        
         .password-requirements {
             font-size: 0.9rem;
             color: #666;
             margin-top: 0.5rem;
             text-align: left;
         }
-
+        
         .password-requirements ul {
             margin: 0.5rem 0 0 1.2rem;
             padding: 0;
         }
-
+        
         .password-requirements li {
             margin-bottom: 0.3rem;
         }
-
-        .success-message,
-        .error-message {
+        
+        .success-message, .error-message {
             padding: 1rem;
             border-radius: 10px;
             margin: 1rem 0;
             font-weight: bold;
         }
-
+        
         .success-message {
             background-color: rgba(46, 204, 113, 0.2);
             color: #27ae60;
         }
-
+        
         .error-message {
             background-color: rgba(231, 76, 60, 0.2);
             color: #c0392b;
         }
-
+        
         .hidden {
             display: none;
         }
-
+        
         .requirement {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
+        
         .requirement:before {
             content: "•";
             color: #999;
         }
-
+        
         .requirement.valid:before {
             content: "✓";
             color: var(--success);
         }
-
+        
         .requirement.invalid:before {
             content: "✗";
             color: var(--danger);
         }
-
+        
         /* No longer needed - replaced with chick decorations */
     </style>
 </head>
-
 <body>
     <div class="container">
-
+        
         <div class="logo">
             <!-- Placeholder for logo -->
             <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">Learn Isle</div>
         </div>
-
+        
         <div class="chick chick-top-left"></div>
         <div class="chick chick-bottom-right"></div>
-
+        
         <!-- Email verification success view -->
         <div id="email-verified" class="hidden">
             <h1>Email Verified Successfully!</h1>
             <div class="success-message">
                 Your email has been confirmed. You can now fully access all features of Learn Isle!
             </div>
-            <p>Time to begin your educational adventure on Learn Isle! Explore islands full of knowledge and fun!</p>
-            <button id="goto-app-button">Go to Learn Isle</button>
+            <p>You can now close this page and continue your educational adventure on Learn Isle!</p>
         </div>
-
+        
         <!-- Password reset view -->
         <div id="password-reset" class="hidden">
             <h1>Reset Your Password</h1>
             <p>Please enter your new password below. Make sure it meets all the requirements.</p>
-
+            
             <div id="reset-form">
                 <div class="form-group">
                     <label for="new-password">New Password</label>
@@ -237,38 +233,37 @@
                         <div class="requirement" id="req-length">At least 8 characters long</div>
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
                     <input type="password" id="confirm-password" placeholder="Confirm your password">
                     <div class="requirement" id="req-match">Passwords must match</div>
                 </div>
-
+                
                 <div id="reset-error" class="error-message hidden">
                     Sorry, there was a problem resetting your password. Please try again.
                 </div>
-
+                
                 <button id="reset-button" disabled>Reset Password</button>
             </div>
-
+            
             <div id="reset-success" class="hidden">
                 <div class="success-message">
                     Your password has been reset successfully!
                 </div>
-                <p>You can now log in to Learn Isle with your new password.</p>
-                <button id="goto-login-button">Go to Login</button>
+                <p>You can now close this page and log in to Learn Isle with your new password.</p>
             </div>
         </div>
-
+        
         <!-- No error view as requested -->
     </div>
-
+    
     <script>
         // Supabase configuration
         const SUPABASE_URL = 'https://tvjlbuwerlcjhgjkdwrc.supabase.co';
         const SUPABASE_API_PATH = '/auth/v1';
         const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2amxidXdlcmxjamhnamtkd3JjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM5NjU4NDcsImV4cCI6MjA1OTU0MTg0N30.JaXaW2AElb-u6o6V_IyRL7DzNJbHUz2UZzdo6tNt0dc'; // Add your Supabase anon/public key here
-
+        
         // DOM elements
         const emailVerifiedView = document.getElementById('email-verified');
         const passwordResetView = document.getElementById('password-reset');
@@ -278,78 +273,78 @@
         const newPasswordInput = document.getElementById('new-password');
         const confirmPasswordInput = document.getElementById('confirm-password');
         const resetButton = document.getElementById('reset-button');
-
+        
         // Requirement elements
         const reqLowercase = document.getElementById('req-lowercase');
         const reqUppercase = document.getElementById('req-uppercase');
         const reqNumber = document.getElementById('req-number');
         const reqLength = document.getElementById('req-length');
         const reqMatch = document.getElementById('req-match');
-
-        // Buttons
-        document.getElementById('goto-app-button').addEventListener('click', () => {
-            window.location.href = 'https://www.inpocket.games';
-        });
-
-        document.getElementById('goto-login-button').addEventListener('click', () => {
-            window.location.href = 'https://www.inpocket.games';
-        });
-
+        
+        // No buttons to handle anymore
+        // document.getElementById('goto-app-button').addEventListener('click', () => {
+        //     window.location.href = 'https://www.inpocket.games';
+        // });
+        
+        // document.getElementById('goto-login-button').addEventListener('click', () => {
+        //     window.location.href = 'https://www.inpocket.games';
+        // });
+        
         // Parse the URL hash to get the token and type
         function parseHash() {
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
-
+            
             return {
                 accessToken: params.get('access_token'),
                 type: params.get('type')
             };
         }
-
+        
         // Validate password
         function validatePassword(password) {
             const hasLowercase = /[a-z]/.test(password);
             const hasUppercase = /[A-Z]/.test(password);
             const hasNumber = /\d/.test(password);
             const isLongEnough = password.length >= 8;
-
+            
             // Update UI
             updateRequirement(reqLowercase, hasLowercase);
             updateRequirement(reqUppercase, hasUppercase);
             updateRequirement(reqNumber, hasNumber);
             updateRequirement(reqLength, isLongEnough);
-
+            
             return hasLowercase && hasUppercase && hasNumber && isLongEnough;
         }
-
+        
         // Update requirement UI
         function updateRequirement(element, isValid) {
             element.classList.remove('valid', 'invalid');
             element.classList.add(isValid ? 'valid' : 'invalid');
         }
-
+        
         // Check if passwords match
         function checkPasswordsMatch() {
             const match = newPasswordInput.value === confirmPasswordInput.value && newPasswordInput.value.length > 0;
             updateRequirement(reqMatch, match);
             return match;
         }
-
+        
         // Update button state
         function updateButtonState() {
             const isPasswordValid = validatePassword(newPasswordInput.value);
             const doPasswordsMatch = checkPasswordsMatch();
-
+            
             resetButton.disabled = !(isPasswordValid && doPasswordsMatch);
         }
-
+        
         // Handle password reset with Supabase
         async function handlePasswordReset(token) {
             try {
                 if (!validatePassword(newPasswordInput.value) || !checkPasswordsMatch()) {
                     return;
                 }
-
+                
                 const response = await fetch(`${SUPABASE_URL}${SUPABASE_API_PATH}/user`, {
                     method: 'PUT',
                     headers: {
@@ -361,7 +356,7 @@
                         password: newPasswordInput.value
                     })
                 });
-
+                
                 if (response.ok) {
                     resetForm.classList.add('hidden');
                     resetSuccess.classList.remove('hidden');
@@ -380,21 +375,21 @@
                 }, 5000);
             }
         }
-
+        
         // Initialize
         function init() {
             const { accessToken, type } = parseHash();
-
+            
             // Check the type and show the appropriate view
             if (type === 'signup') {
                 emailVerifiedView.classList.remove('hidden');
             } else if (type === 'recovery') {
                 passwordResetView.classList.remove('hidden');
-
+                
                 // Set up password validation listeners
                 newPasswordInput.addEventListener('input', updateButtonState);
                 confirmPasswordInput.addEventListener('input', updateButtonState);
-
+                
                 // Set up reset button
                 resetButton.addEventListener('click', () => handlePasswordReset(accessToken));
             } else {
@@ -402,10 +397,9 @@
                 emailVerifiedView.classList.remove('hidden');
             }
         }
-
+        
         // Start the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-
 </html>
