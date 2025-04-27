@@ -4,258 +4,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portfolio of Mustafa Berkay Uslu, a game programmer eager to master the creation of game mechanics.">
-    <meta name="keywords" content="Game Developer, Portfolio, Mustafa Berkay Uslu, Game Programmer">
-    <title>Mustafa Berkay Uslu Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="Resources/favicon-16x16.png" type="image/x-icon">
+    <title>Learn Isle - Account Access</title>
+    <style>
+        :root {
+            --primary: #f7b801;
+            --secondary: #ffde59;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --dark: #5a4123;
+            --light: #fffbeb;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+            background-color: #fffbeb;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M30,10 Q50,5 70,10 T90,30 T70,50 T90,70 T70,90 T50,95 T30,90 T10,70 T30,50 T10,30 T30,10" fill="none" stroke="%23ffc107" stroke-width="2" /></svg>');
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo img {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .chick {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="%23FFEB3B"/><circle cx="40" cy="40" r="5" fill="%23000"/><circle cx="60" cy="40" r="5" fill="%23000"/><path d="M45,60 Q50,65 55,60" stroke="%23000" stroke-width="2" fill="none"/><path d="M40,30 L30,20" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M60,30 L70,20" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M50,80 L40,90" stroke="%23FF9800" stroke-width="3" fill="none"/><path d="M50,80 L60,90" stroke="%23FF9800" stroke-width="3" fill="none"/></svg>');
+        }
+
+        .chick-top-left {
+            top: 20px;
+            left: 20px;
+            transform: rotate(-15deg);
+        }
+
+        .chick-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(15deg);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #ffaa00;
+            transform: translateY(-2px);
+        }
+
+        .password-requirements {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .password-requirements ul {
+            margin: 0.5rem 0 0 1.2rem;
+            padding: 0;
+        }
+
+        .password-requirements li {
+            margin-bottom: 0.3rem;
+        }
+
+        .success-message,
+        .error-message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .success-message {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+        }
+
+        .error-message {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .requirement:before {
+            content: "•";
+            color: #999;
+        }
+
+        .requirement.valid:before {
+            content: "✓";
+            color: var(--success);
+        }
+
+        .requirement.invalid:before {
+            content: "✗";
+            color: var(--danger);
+        }
+
+        /* No longer needed - replaced with chick decorations */
+    </style>
 </head>
 
 <body>
-    <main>
-        <section id="home" class="intro-section">
-            <div class="intro-row">
-                <h1 class="name">Mustafa Berkay Uslu</h1>
-                <div class="links">
-                    <a href="https://www.linkedin.com/in/usluberkay/" target="_blank" class="icon"
-                        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/BerkayUslu" target="_blank" class="icon" aria-label="GitHub"><i
-                            class="fab fa-github"></i></a>
-                    <a href="#" class="icon" id="email-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    <span class="email" id="email-address">mberkayuslu@outlook.com</span>
-                    <a href="Resources/mustafa_berkay_uslu_cv.pdf" target="_blank" class="resume-button">Resume <i
-                            class="fas fa-arrow-down"></i></a>
-                </div>
+    <div class="container">
+
+        <div class="logo">
+            <!-- Placeholder for logo -->
+            <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">Learn Isle</div>
+        </div>
+
+        <div class="chick chick-top-left"></div>
+        <div class="chick chick-bottom-right"></div>
+
+        <!-- Email verification success view -->
+        <div id="email-verified" class="hidden">
+            <h1>Email Verified Successfully!</h1>
+            <div class="success-message">
+                Your email has been confirmed. You can now fully access all features of Learn Isle!
             </div>
-            <div class="profile-image-container">
-                <img src="Resources/profile.png" alt="Profile Image" class="profile-image">
+            <p>Time to begin your educational adventure on Learn Isle! Explore islands full of knowledge and fun!</p>
+            <button id="goto-app-button">Go to Learn Isle</button>
+        </div>
+
+        <!-- Password reset view -->
+        <div id="password-reset" class="hidden">
+            <h1>Reset Your Password</h1>
+            <p>Please enter your new password below. Make sure it meets all the requirements.</p>
+
+            <div id="reset-form">
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" placeholder="Enter new password">
+                    <div class="password-requirements">
+                        <div class="requirement" id="req-lowercase">At least one lowercase letter</div>
+                        <div class="requirement" id="req-uppercase">At least one uppercase letter</div>
+                        <div class="requirement" id="req-number">At least one number</div>
+                        <div class="requirement" id="req-length">At least 8 characters long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your password">
+                    <div class="requirement" id="req-match">Passwords must match</div>
+                </div>
+
+                <div id="reset-error" class="error-message hidden">
+                    Sorry, there was a problem resetting your password. Please try again.
+                </div>
+
+                <button id="reset-button" disabled>Reset Password</button>
             </div>
-        </section>
-        <section id="projects">
-            <h2 class="projects-title">Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Learn Isle</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/learn-isle-app-icon.jpeg" alt="Game Image 1"
-                            class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                    </div>
-                    <p>Game is designed to help children learn topics such as English and math through engaging
-                        gameplay. The development team consists of five members: three programmers, one designer, and
-                        one artist. I am leading the programming team, overseeing the work of two other developers.
-                        Throughout the development process, I have gained valuable knowledge about version restrictions
-                        and the publishing processes for both Android and iOS platforms. The game has been accepted into
-                        the OGEM Incubation Program and is actively under development.</p>
+
+            <div id="reset-success" class="hidden">
+                <div class="success-message">
+                    Your password has been reset successfully!
                 </div>
-                <div class="project-card">
-                    <h3>DEADLY DRIVE</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/DeadlyDrive.gif" alt="Deadly Drive GIF" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/yasarguzell/CarGame" target="_blank" class="icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                    <p>Deadly Drive game created during the Udo Games NextGen Devs 2024 Program with a team. The player
-                        controls a car equipped
-                        with guns, traveling through zombie-infested lands while protecting its cargo from damage. My
-                        role in this project was to develop the car control mechanics.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Boo Land Cafe Idle </h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/BooLandCafeIdle.png" alt="Boo Land Cafe Idle"
-                            class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/yasarguzell/GhostRestaurantIdle" target="_blank" class="icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                    <p>Boo Land Cafe Idle game created during the Udo Games NextGen Devs 2024 Program with a team. TThe
-                        player manages the Lounge, Kitchen, and Scullery areas by upgrading them with coins earned from
-                        customers, and increases revenue by opening new cafes. My role in this game was to create the
-                        logic for worker and customer interactions, as well as the plate and food flow between rooms.
-                    </p>
-                </div>
-                <div class="project-card">
-                    <h3>Fruit Basket Game</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/fruit basket.png" alt="Game Image 2" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video"
-                            src="https://www.youtube.com/embed/63g5nlTUfXs?si=tOstguiSUtxew28p" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <button class="toggle-video">Show Video</button>
-                    </div>
-                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
-                        for Unity asset to create body tracking features. The game starts by checking if the required
-                        parts of the player's body are within the frame using body pose estimation.
-                        In the game player's body is tracked, and a basket follows their movements. The
-                        objective is to catch falling fruits by moving left and right.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Balloon Game</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/Balloon.png" alt="Game Image 2" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video"
-                            src="https://www.youtube.com/embed/_RhI7ye-L_A?si=-ft7vXQX086C6l2l" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <button class="toggle-video">Show Video</button>
-                    </div>
-                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
-                        for Unity asset to create body tracking features. The game starts by checking if the required
-                        parts of the player's body are within the frame using body pose estimation.
-                        In the game, the player's hands are tracked. The objective is to pop the balloons using their
-                        hands within a set time frame.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Submarine Game</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/Submarine.png" alt="Game Image 2" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video"
-                            src="https://www.youtube.com/embed/MnUnHhTuSR8?si=N7AZqO_ouGyl5zGL" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <button class="toggle-video">Show Video</button>
-                    </div>
-                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
-                        for Unity asset to create body tracking features. The game starts by checking if the required
-                        parts of the player's body are within the frame using body pose estimation.
-                        In the game, the player's head is tracked. If the player is too close to the screen, the game
-                        stops to prevent cheating. The objective is to move a submarine vertically and travel without
-                        hitting the barriers.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Bamboo Game</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/bamboo.png" alt="Game Image 2" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video"
-                            src="https://www.youtube.com/embed/olgnQRe8ptU?si=fqnq_TvHm7vlWeUS" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <button class="toggle-video">Show Video</button>
-                    </div>
-                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
-                        for Unity asset to create body tracking features. The game starts by checking if the required
-                        parts of the player's body are within the frame using body pose estimation.
-                        In the game, the player's full body is tracked. The objective is to move away from the red zone
-                        on the screen. The game stops if the player cannot be detected for a certain time to prevent
-                        cheating.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Ball Game</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/Ball game.png" alt="Game Image 2" class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video"
-                            src="https://www.youtube.com/embed/_aceHvvcaxs?si=0tj89JKxDytSZ5gs" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <button class="toggle-video">Show Video</button>
-                    </div>
-                    <p>I developed this game as a freelance game developer for a company. The game utilizes the OpenCV
-                        for Unity asset to create body tracking features. The game starts by checking if the required
-                        parts of the player's body are within the frame using body pose estimation.
-                        In the game, the player's hands are tracked. The player needs to hit the balls coming out of the
-                        tubes while avoiding spiked balls, which decrease their health.</p>
-                </div>
+                <p>You can now log in to Learn Isle with your new password.</p>
+                <button id="goto-login-button">Go to Login</button>
             </div>
-        </section>
-        <section id="personal-projects">
-            <h2 class="projects-title">Personal Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Space Shooter</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/SpaceShooter.png" alt="Personal Project Image 1"
-                            class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/BerkayUslu/SpaceShooter" target="_blank" class="icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                    <p>Space Shooter game created during the Panteon Academy program. Players try to survive waves of
-                        aliens and destroy them to gain score.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Infinite Mage</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/InfiniteMage.png" alt="Personal Project Image 1"
-                            class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/BerkayUslu/Infinite-Mage" target="_blank" class="icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                    <p>"Infinite Mage" is a 3D Vampire Survivors-like game. The player's
-                        objective is to level up and survive longer by killing enemies. As time goes on, the game
-                        becomes increasingly challenging with both an increase in the number of enemies spawning and the
-                        appearance of more powerful enemies. To enhance camera control, the Cinemachine tool is
-                        utilized.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Snowy Hills</h3>
-                    <div class="image-container">
-                        <img src="Resources/Game Photos/SnowyHills.png" alt="Personal Project Image 2"
-                            class="project-image">
-                    </div>
-                    <div class="video-container">
-                        <iframe class="project-video" src="https://www.youtube.com/embed/97Z3qSSbwkY" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/BerkayUslu/SnowyHills" target="_blank" class="icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://dreamsnail.itch.io/snowy-hills" target="_blank" class="icon"
-                            aria-label="itch.io"><i class="fab fa-itch-io"></i></a>
-                    </div>
-                    <p>"Snowy Hills" is a 2D snowboard game. The player's objective is to not crash the ground and get
-                        points by doing flips. The game continues until the player loses all hearts.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script src="script.js"></script>
+        </div>
+
+        <!-- No error view as requested -->
+    </div>
+
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'https://tvjlbuwerlcjhgjkdwrc.supabase.co';
+        const SUPABASE_API_PATH = '/auth/v1';
+        const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2amxidXdlcmxjamhnamtkd3JjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM5NjU4NDcsImV4cCI6MjA1OTU0MTg0N30.JaXaW2AElb-u6o6V_IyRL7DzNJbHUz2UZzdo6tNt0dc'; // Add your Supabase anon/public key here
+
+        // DOM elements
+        const emailVerifiedView = document.getElementById('email-verified');
+        const passwordResetView = document.getElementById('password-reset');
+        const resetForm = document.getElementById('reset-form');
+        const resetSuccess = document.getElementById('reset-success');
+        const resetError = document.getElementById('reset-error');
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const resetButton = document.getElementById('reset-button');
+
+        // Requirement elements
+        const reqLowercase = document.getElementById('req-lowercase');
+        const reqUppercase = document.getElementById('req-uppercase');
+        const reqNumber = document.getElementById('req-number');
+        const reqLength = document.getElementById('req-length');
+        const reqMatch = document.getElementById('req-match');
+
+        // Buttons
+        document.getElementById('goto-app-button').addEventListener('click', () => {
+            window.location.href = 'https://www.inpocket.games';
+        });
+
+        document.getElementById('goto-login-button').addEventListener('click', () => {
+            window.location.href = 'https://www.inpocket.games';
+        });
+
+        // Parse the URL hash to get the token and type
+        function parseHash() {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+
+            return {
+                accessToken: params.get('access_token'),
+                type: params.get('type')
+            };
+        }
+
+        // Validate password
+        function validatePassword(password) {
+            const hasLowercase = /[a-z]/.test(password);
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasNumber = /\d/.test(password);
+            const isLongEnough = password.length >= 8;
+
+            // Update UI
+            updateRequirement(reqLowercase, hasLowercase);
+            updateRequirement(reqUppercase, hasUppercase);
+            updateRequirement(reqNumber, hasNumber);
+            updateRequirement(reqLength, isLongEnough);
+
+            return hasLowercase && hasUppercase && hasNumber && isLongEnough;
+        }
+
+        // Update requirement UI
+        function updateRequirement(element, isValid) {
+            element.classList.remove('valid', 'invalid');
+            element.classList.add(isValid ? 'valid' : 'invalid');
+        }
+
+        // Check if passwords match
+        function checkPasswordsMatch() {
+            const match = newPasswordInput.value === confirmPasswordInput.value && newPasswordInput.value.length > 0;
+            updateRequirement(reqMatch, match);
+            return match;
+        }
+
+        // Update button state
+        function updateButtonState() {
+            const isPasswordValid = validatePassword(newPasswordInput.value);
+            const doPasswordsMatch = checkPasswordsMatch();
+
+            resetButton.disabled = !(isPasswordValid && doPasswordsMatch);
+        }
+
+        // Handle password reset with Supabase
+        async function handlePasswordReset(token) {
+            try {
+                if (!validatePassword(newPasswordInput.value) || !checkPasswordsMatch()) {
+                    return;
+                }
+
+                const response = await fetch(`${SUPABASE_URL}${SUPABASE_API_PATH}/user`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                        'apikey': SUPABASE_API_KEY
+                    },
+                    body: JSON.stringify({
+                        password: newPasswordInput.value
+                    })
+                });
+
+                if (response.ok) {
+                    resetForm.classList.add('hidden');
+                    resetSuccess.classList.remove('hidden');
+                } else {
+                    resetError.classList.remove('hidden');
+                    console.error('Supabase error:', await response.json());
+                    setTimeout(() => {
+                        resetError.classList.add('hidden');
+                    }, 5000);
+                }
+            } catch (error) {
+                console.error('Error resetting password:', error);
+                resetError.classList.remove('hidden');
+                setTimeout(() => {
+                    resetError.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        // Initialize
+        function init() {
+            const { accessToken, type } = parseHash();
+
+            // Check the type and show the appropriate view
+            if (type === 'signup') {
+                emailVerifiedView.classList.remove('hidden');
+            } else if (type === 'recovery') {
+                passwordResetView.classList.remove('hidden');
+
+                // Set up password validation listeners
+                newPasswordInput.addEventListener('input', updateButtonState);
+                confirmPasswordInput.addEventListener('input', updateButtonState);
+
+                // Set up reset button
+                resetButton.addEventListener('click', () => handlePasswordReset(accessToken));
+            } else {
+                // Default to email verified view if type is not recognized
+                emailVerifiedView.classList.remove('hidden');
+            }
+        }
+
+        // Start the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 
 </html>
